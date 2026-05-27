@@ -1,0 +1,45 @@
+[build-system]
+# Minimum requirements for the build system to execute.
+# see PEP518: https://www.python.org/dev/peps/pep-0518/
+requires = [
+    "numpy",
+    "setuptools >= 61.0.0",
+    "wheel",
+    ]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qm-seismon-waveform-plugin"
+version = "0.1.0"
+description = "A waveform client plugin for QuakeMigrate based on the NORSAR seismonpy client."
+readme = "README.md"
+license = {text = "GPLv3"}
+requires-python = ">=3.13"
+dependencies = [
+    "quakemigrate>=1.3.0",
+    "seismonpy>=2025.2.1",
+]
+authors = [
+    {name = "Conor A. Bacon", email = "conor.bacon@norsar.no"},
+]
+
+[project.entry-points."quakemigrate.waveform_clients"]
+seismon = "seismon_waveform_client:SeismonWaveformClient"
+
+[tool.setuptools]
+py-modules = ["seismon_waveform_client"]
+
+[tool.uv.sources]
+seismonpy = { index = "norsar-seismon" }
+
+[[tool.uv.index]]
+name = "norsar-seismon"
+url = "http://srv-wcomp2/seismon/python/"
+explicit = true
+
+[project.urls]
+GitHub = "https://github.com/hemmelig/SeisMonWaveformClientPlugin"
+Issues = "https://github.com/hemmelig/SeisMonWaveformClientPlugin/issues"
+
+[tool.ruff]
+line-length = 88
