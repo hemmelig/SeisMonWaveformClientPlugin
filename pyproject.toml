@@ -30,7 +30,7 @@ seismon = "seismon_waveform_client:SeismonWaveformClient"
 py-modules = ["seismon_waveform_client"]
 
 [tool.uv.sources]
-quakemigrate = { path = "/staff/conor/software/QuakeMigrate" }
+quakemigrate = { git = "https://github.com/QuakeMigrate/QuakeMigrate.git", branch = "staging/v1.3.0" }
 seismonpy = { index = "norsar-seismon" }
 
 [[tool.uv.index]]
